@@ -23,7 +23,7 @@ final class PersonajesController extends AbstractController
     #[Route('/personajes', name: 'app_personajes')]
     public function obtenerPersonajes(): Response
       {
-        $response = $this->httpClient->request('GET', 'https://dragonball-api.com/api/characters');
+        $response = $this->httpClient->request('GET', 'https://dragonball-api.com/api/characters?limit=12');
         $data = $response->toArray(); 
         return $this->render('personajes/personajes.html.twig', [
             'personajes' => $data['items'] ?? [],

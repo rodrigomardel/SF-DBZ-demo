@@ -124,7 +124,7 @@ h3{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 40px;
-  padding: 16px;
+  padding: 60px 140px 60px 140px;
   margin-left: auto;
   margin-right: auto;
   place-content: center;
@@ -132,11 +132,13 @@ h3{
 }
 .pj-ctn-pj{
   margin-top: 0;
+  text-align: center;
 }
 .ficha-pj{
   display: flex;
   list-style: none;
   margin: 0 auto;
+  padding-left: 0px;
     li{
       padding: 1rem;
       p{
@@ -226,8 +228,6 @@ p{
     }
 }
 .img-trans{
-  /* width: 200px;
-  height: 400px; */
   width: 100%;
   height: 100%;
   min-height: 400px;
@@ -246,6 +246,38 @@ p{
   place-items: center;
   justify-content: center;
 }
+/* ---------------------- PAGINACION
+-------------------------------------------------------------- */
+.paginacion {
+	margin:20px 0;
+}
+
+.paginacion ul {
+	list-style:none;
+	text-align: center;
+}
+
+.paginacion ul li {
+	display:inline-block;
+	margin-right:10px;
+}
+
+.paginacion ul li a {
+	display:block;
+	padding:10px 20px;
+  color: black;
+  background-color: white;
+	text-decoration: none;
+}
+
+.paginacion ul li a:hover {
+  background-color: rgb(255, 240, 154);
+}
+
+.paginacion ul li .active {
+  background-color: rgb(233, 67, 67);
+	font-weight: bold;
+}
 /* ---------------------- FOOTER
 -------------------------------------------------------------- */
 footer {
@@ -263,6 +295,8 @@ footer {
   .pj-ctn {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+@media (width<1200px) {
   .pj-ctn{
     grid-template-columns: repeat(2, 1fr);
   }

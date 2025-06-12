@@ -22,7 +22,7 @@ final class HomeController extends AbstractController
     #[Route('/home', name: 'app_home')]
     public function obtenerPersonajes(): Response
     {
-        $response = $this->httpClient->request('GET', 'https://dragonball-api.com/api/characters');
+        $response = $this->httpClient->request('GET', 'https://dragonball-api.com/api/characters?limit=12');
         $data = $response->toArray(); 
         return $this->render('home/home.html.twig', [
             'personajes' => $data['items'] ?? [],

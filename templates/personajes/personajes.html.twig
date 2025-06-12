@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-  <h1>¡Toda la información de tu personaje!</h1>
+  <h1>¡Toda la información de tu personaje favorito!</h1>
  <div class="pj-ctn boxed">
     {% for personaje in personajes %}
         <a class="link-raza" href="{{ path('app_personaje', {'id': personaje.id}) }}">
@@ -32,4 +32,13 @@
         </a>
     {% endfor %}
     </div>
+    <section class="paginacion">
+        <ul>
+            <li><a href="" class="activa">1</a></li>
+            <li><a href="">2</a></li>
+            <li><a href="">3</a></li>
+            <li><a href="">4</a></li>
+            <li><a href="">5</a></li>
+        </ul>
+    </section>
 {% endblock %}
