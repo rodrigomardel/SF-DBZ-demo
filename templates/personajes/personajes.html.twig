@@ -1,33 +1,35 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-  <h1>¡Todos los personajes!</h1>
+  <h1>¡Toda la información de tu personaje!</h1>
  <div class="pj-ctn boxed">
     {% for personaje in personajes %}
-        <article>
-            <div class="pj-ctn-img">
-                <img class="pj-img" src="{{ asset(personaje.image) }}" alt="pj-img">
-            </div>
-            <div class="pj-footer">
-                <div class="pj-title">
-                    <h2>{{ personaje.name }}</h2>
-                    <p>{{ personaje.race }} - {{ personaje.gender }}</p>
+        <a class="link-raza" href="{{ path('app_personaje', {'id': personaje.id}) }}">
+            <article>
+                <div class="pj-ctn-img">
+                    <img class="pj-img" src="{{ asset(personaje.image) }}" alt="pj-img">
                 </div>
-                <div>
-                    <div>
-                        <p>Base KI:</p>
-                        <span>{{ personaje.ki }}</span>
+                <div class="pj-footer">
+                    <div class="pj-title">
+                        <h2>{{ personaje.name }}</h2>
+                        <p>{{ personaje.race }} - {{ personaje.gender }}</p>
                     </div>
                     <div>
-                        <p>Total KI:</p>
-                        <span>{{ personaje.maxKi }}</span>
-                    </div>
-                    <div>
-                        <p>Afilliation:</p>
-                        <span>{{ personaje.affiliation }}</span>
+                        <div>
+                            <p>Base KI:</p>
+                            <span>{{ personaje.ki }}</span>
+                        </div>
+                        <div>
+                            <p>Total KI:</p>
+                            <span>{{ personaje.maxKi }}</span>
+                        </div>
+                        <div>
+                            <p>Afilliation:</p>
+                            <span>{{ personaje.affiliation }}</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </article>
+            </article>
+        </a>
     {% endfor %}
     </div>
 {% endblock %}

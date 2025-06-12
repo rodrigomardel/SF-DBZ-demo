@@ -17,6 +17,9 @@ final class PersonajesController extends AbstractController
         $this->httpClient = $httpClient;
     }
 
+    /**
+    * Obtención de todos los personajes en caso contrario datos vacíos
+    */
     #[Route('/personajes', name: 'app_personajes')]
     public function obtenerPersonajes(): Response
       {
@@ -24,6 +27,20 @@ final class PersonajesController extends AbstractController
         $data = $response->toArray(); 
         return $this->render('personajes/personajes.html.twig', [
             'personajes' => $data['items'] ?? [],
+        ]);
+    }
+
+     /**
+     * Obtiene los datos completos del personaje seleccionado
+     * @param int identificador personaje correspondiente
+     */
+    #[Route('/personaje/{id}', name: 'app_personaje')]
+    public function obtenerPersonajeId(int $id): Response
+    {
+        $response = $this->httpClient->request('GET', 'https://dragonball-api.com/api/characters/'.$id);
+        $data = $response->toArray(); 
+        return $this->render('personajes/personaje.html.twig', [
+            'personaje' => $data, 
         ]);
     }
 }

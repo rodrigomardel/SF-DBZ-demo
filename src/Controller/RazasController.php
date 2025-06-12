@@ -31,7 +31,7 @@ final class RazasController extends AbstractController
 
     /**
      * Obtiene los personajes de la raza seleccionada
-     * @param raza correspondiente
+     * @param string raza correspondiente
      */
     #[Route('/personajesrazas/{raza}', name: 'app_personajes_razas')]
     public function obtenerPersonajesRaza(string $raza): Response

@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ficha de {{ personaje.name }}</h1>
+    <div class="pj-ctn-pj boxed">
+        <article class="art-pj">
+            <div class="pj-ctn-img">
+                <img class="pj-img" src="{{ personaje.image }}" alt="Imagen de {{ personaje.name }}">
+            </div>
+            <div class="pj-footer">
+                <div class="pj-title">
+                    <h2>{{ personaje.name }}</h2>
+                    <p>{{ personaje.race }} - {{ personaje.gender }}</p>
+                </div>
+                <div>
+                    <div>
+                        <p>Base KI:</p>
+                        <span>{{ personaje.ki }}</span>
+                    </div>
+                    <div>
+                        <p>Total KI:</p>
+                        <span>{{ personaje.maxKi }}</span>
+                    </div>
+                    <div>
+                        <p>Afilación:</p>
+                        <span>{{ personaje.affiliation }}</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <div class="pj-ctn-pj boxed">
+        <h3>Transformaciones:</h3>
+        {% if personaje.transformations is empty %}
+        <div class="msj-empty">
+            <p>No hay transformaciones</p>
+        </div>
+        {% else %}
+        {% endif %}
+            <ul>
+                {% for transformation in personaje.transformations %}
+                    <li>
+                        <p>{{ transformation.name }} - KI: {{ transformation.ki }}</p>
+                        <div class="img-trans">
+                            <img src="{{ transformation.image }}" alt="{{ transformation.name }}">
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <h3>Planeta de origen:</h3>
+        <div>
+            <p>{{ personaje.originPlanet.name }} - {{ personaje.originPlanet.description }}</p>
+            <img src="{{ personaje.originPlanet.image }}" alt="{{ personaje.originPlanet.name }}">
+        </div>
+    </div>
+{% endblock %}
+

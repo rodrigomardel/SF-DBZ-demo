@@ -15,8 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let botonRetroceder = document.querySelector('.prev');
     let botonAvanzar = document.querySelector('.next');
 
+    botonAvanzar.addEventListener('click', adelantarImagen);
+    botonRetroceder.addEventListener('click', retrocederImagen);
+    renderizarImagen();
+
     function adelantarImagen() {
-        if (posicionActual >= IMAGENES.length - 1) {
+        if (posicionActual >= IMAGENES.length -1) {
             posicionActual = 0;
         } else {
             posicionActual++;
@@ -36,9 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderizarImagen() {
         imagen.style.backgroundImage = `url(${IMAGENES[posicionActual]})`;
     }
-
-    botonAvanzar.addEventListener('click', adelantarImagen);
-    botonRetroceder.addEventListener('click', retrocederImagen);
-    renderizarImagen();
+   
 });
 
