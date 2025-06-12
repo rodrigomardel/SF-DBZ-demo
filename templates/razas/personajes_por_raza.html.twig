@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>Personajes de la raza {{ raza }}</h1>
+
+{% if personajes is empty %}
+    <div class="msj-empty">
+        <p>No se encontraron personajes para esta raza</p>
+    </div>
+{% else %}
+    <div class="pj-ctn-raza boxed">
+        {% for personaje in personajes %}
+        <article>
+            <div class="pj-ctn-img">
+                <img class="pj-img" src="{{ asset(personaje.image) }}" alt="pj-img">
+            </div>
+            <div class="pj-footer">
+                <div class="pj-title">
+                    <h2>{{ personaje.name }}</h2>
+                    <p>{{ personaje.race }} - {{ personaje.gender }}</p>
+                </div>
+                <div>
+                    <div>
+                        <p>Base KI:</p>
+                        <span>{{ personaje.ki }}</span>
+                    </div>
+                    <div>
+                        <p>Total KI:</p>
+                        <span>{{ personaje.maxKi }}</span>
+                    </div>
+                    <div>
+                        <p>Afilliation:</p>
+                        <span>{{ personaje.affiliation }}</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+{% endif %}
+{% endblock %}
+
+

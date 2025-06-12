@@ -7,4 +7,38 @@ import './bootstrap.js';
  */
 import './styles/app.css';
 
-console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
+document.addEventListener('DOMContentLoaded', () => {
+    const IMAGENES = ["/assets/img/logo_dragonballapi-ngN4G3c.webp", "/assets/img/unnamed-SyjGglf.jpg", "/assets/img/dragon-ball-super-pictures-6s9gnffpcvuar9c4-UitZxi4.jpg"];
+
+    let imagen = document.querySelector('.slider-img');
+    let posicionActual = 0;
+    let botonRetroceder = document.querySelector('.prev');
+    let botonAvanzar = document.querySelector('.next');
+
+    function adelantarImagen() {
+        if (posicionActual >= IMAGENES.length - 1) {
+            posicionActual = 0;
+        } else {
+            posicionActual++;
+        }
+        renderizarImagen();
+    }
+
+    function retrocederImagen() {
+        if (posicionActual <= 0) {
+            posicionActual = IMAGENES.length - 1;
+        } else {
+            posicionActual--;
+        }
+        renderizarImagen();
+    }
+
+    function renderizarImagen() {
+        imagen.style.backgroundImage = `url(${IMAGENES[posicionActual]})`;
+    }
+
+    botonAvanzar.addEventListener('click', adelantarImagen);
+    botonRetroceder.addEventListener('click', retrocederImagen);
+    renderizarImagen();
+});
+

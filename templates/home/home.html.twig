@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="body-ctn">
+           <div class="slider-ctn">
+            <button class="prev">&#10094;</button>
+                <div class="slider-img"></div>
+            <button class="next">&#10095;</button>
+        </div>
+    </div>
+    <div class="pj-ctn boxed">
+    {% for personaje in personajes %}
+        <article>
+            <div class="pj-ctn-img">
+                <img class="pj-img" src="{{ asset(personaje.image) }}" alt="pj-img">
+            </div>
+            <div class="pj-footer">
+                <div class="pj-title">
+                    <h2>{{ personaje.name }}</h2>
+                    <p>{{ personaje.race }} - {{ personaje.gender }}</p>
+                </div>
+                <div>
+                    <div>
+                        <p>Base KI:</p>
+                        <span>{{ personaje.ki }}</span>
+                    </div>
+                    <div>
+                        <p>Total KI:</p>
+                        <span>{{ personaje.maxKi }}</span>
+                    </div>
+                    <div>
+                        <p>Afilliation:</p>
+                        <span>{{ personaje.affiliation }}</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+    {% endfor %}
+    </div>
+{% endblock %}
