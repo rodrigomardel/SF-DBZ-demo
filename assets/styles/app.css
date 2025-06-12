@@ -134,14 +134,20 @@ h3{
   margin-top: 0;
 }
 .ficha-pj{
+  display: flex;
   list-style: none;
   margin: 0 auto;
-  li{
-    text-align: center
-  }
+    li{
+      padding: 1rem;
+      p{
+        text-align: center;
+      }
+    }
+
 }
 .ficha-pj-planeta{
   margin-top: 0;
+  text-align: center;
 }
 .art-pj{
   width: 280px;
@@ -150,6 +156,7 @@ h3{
   border-radius: 0.5rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 2;
+  justify-content: center;
 }
 .pj-ctn-raza {
   gap: 40px;
@@ -219,12 +226,19 @@ p{
     }
 }
 .img-trans{
-  width: 20%;
-  height: 50%;
+  /* width: 200px;
+  height: 400px; */
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  max-height: 400px;
+  margin: 0px;
+  z-index: 0;
+  object-fit: contain;
 }
 .pj-ctn-ficha{
   display: grid;
-  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  grid-template-columns: repeat(1, minmax(300px, 1fr));
   gap: 60px;
   padding: 16px;
   margin-left: auto;

@@ -30,8 +30,8 @@
         </article>
 
         <div class="pj-ctn-pj boxed">
+        <h3>Transformaciones</h3>
         <ul class="ficha-pj">
-            <h3>Transformaciones</h3>
             {% if personaje.transformations is empty %}
             <div class="msj-empty">
                 <p>No hay transformaciones</p>
@@ -40,7 +40,7 @@
             {% endif %}
                 {% for transformation in personaje.transformations %}
                     <li>
-                        <p>{{ transformation.name }} - KI: {{ transformation.ki }}</p>
+                        <p>{{ transformation.name }} <br> KI: {{ transformation.ki }}</p>
                         <img class="img-trans" src="{{ transformation.image }}" alt="{{ transformation.name }}">
                     </li>
                 {% endfor %}
