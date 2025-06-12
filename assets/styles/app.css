@@ -6,7 +6,7 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .boxed {
-  max-width: 1170px;
+  max-width: 1400px;
   margin: auto;
 }
 img {
@@ -61,6 +61,7 @@ h1{
 .body-ctn{
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 .body-img{
   padding-top: 40px;
@@ -75,7 +76,9 @@ section{
 .slider-img{
   width: 100%;
   height: 600px;
-  background-size: cover;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .slider-ctn{
   position: relative;
@@ -105,10 +108,11 @@ section{
     right: 2px;
 }
 button {
-  background-color: rgba(233, 181, 67, 0.712);
-  width: 40px;
-  height: 50px;
-  border-radius: 0.5rem;
+  background: transparent;
+  width: 100x;
+  height: 100px;
+  border: none;
+  color: white;
 }
 /* ----------- GRID PERSONAJES
 ----------------------------------------------- */
@@ -120,15 +124,27 @@ h3{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 40px;
-  padding: 2rem 0 2rem 0;
+  padding: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  place-content: center;
+  place-items: center;
 }
 .pj-ctn-pj{
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
-  padding: 2rem 0 2rem 0;
+  margin-top: 0;
+}
+.ficha-pj{
+  list-style: none;
+  margin: 0 auto;
+  li{
+    text-align: center
+  }
+}
+.ficha-pj-planeta{
+  margin-top: 0;
 }
 .art-pj{
-    width: 280px;
+  width: 280px;
   flex-direction: column;
   background: white;
   border-radius: 0.5rem;
@@ -136,9 +152,10 @@ h3{
   margin: 2;
 }
 .pj-ctn-raza {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
   gap: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 article {
   width: 280px;
@@ -173,6 +190,7 @@ article:hover{
   max-height: 400px;
   margin: 0px;
   z-index: 0;
+  object-fit: contain;
 }
 .pj-footer{
   padding: 0.75rem;
@@ -204,6 +222,16 @@ p{
   width: 20%;
   height: 50%;
 }
+.pj-ctn-ficha{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  gap: 60px;
+  padding: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  place-items: center;
+  justify-content: center;
+}
 /* ---------------------- FOOTER
 -------------------------------------------------------------- */
 footer {
@@ -214,4 +242,19 @@ footer {
   height: 100px;
   border-top: 1px solid black;
   text-align: center;
+}
+/* ---------------------- MEDIAS
+-------------------------------------------------------------- */
+@media (width<1400px) {
+  .pj-ctn {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .pj-ctn{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (width<1400px) {
+  .pj-ctn-ficha{
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
