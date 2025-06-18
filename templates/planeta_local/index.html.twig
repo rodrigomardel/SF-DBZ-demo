@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Planeta index{% endblock %}
+
+{% block body %}
+    <h1>Planeta index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>IsDestroyed</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>DeletedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for planetum in planetas %}
+            <tr>
+                <td>{{ planetum.id }}</td>
+                <td>{{ planetum.name }}</td>
+                <td>{{ planetum.isDestroyed ? 'Yes' : 'No' }}</td>
+                <td>{{ planetum.description }}</td>
+                <td>{{ planetum.image }}</td>
+                <td>{{ planetum.deletedAt ? planetum.deletedAt|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_planeta_local_show', {'id': planetum.id}) }}">show</a>
+                    <a href="{{ path('app_planeta_local_edit', {'id': planetum.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_planeta_local_new') }}">Create new</a>
+{% endblock %}

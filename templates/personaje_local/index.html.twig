@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Personaje index{% endblock %}
+
+{% block body %}
+    <h1>Personaje index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Ki</th>
+                <th>MaxKi</th>
+                <th>Race</th>
+                <th>Gender</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Affiliation</th>
+                <th>DeletedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for personaje in personajes %}
+            <tr>
+                <td>{{ personaje.id }}</td>
+                <td>{{ personaje.name }}</td>
+                <td>{{ personaje.ki }}</td>
+                <td>{{ personaje.maxKi }}</td>
+                <td>{{ personaje.race }}</td>
+                <td>{{ personaje.gender }}</td>
+                <td>{{ personaje.description }}</td>
+                <td>{{ personaje.image }}</td>
+                <td>{{ personaje.affiliation }}</td>
+                <td>{{ personaje.deletedAt ? personaje.deletedAt|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_personaje_local_show', {'id': personaje.id}) }}">show</a>
+                    <a href="{{ path('app_personaje_local_edit', {'id': personaje.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_personaje_local_new') }}">Create new</a>
+{% endblock %}

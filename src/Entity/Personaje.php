@@ -29,10 +29,10 @@ class Personaje
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $gender = null;
 
-    #[ORM\Column(length: 1000, nullable: true)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column(length: 500, nullable: true)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -40,6 +40,10 @@ class Personaje
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTime $deletedAt = null;
+
+    #[ORM\ManyToOne(inversedBy: 'character_id')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Planeta $planeta = null;
 
     public function getId(): ?int
     {
@@ -150,6 +154,18 @@ class Personaje
     public function setDeletedAt(?\DateTime $deletedAt): static
     {
         $this->deletedAt = $deletedAt;
+
+        return $this;
+    }
+
+    public function getPlaneta(): ?Planeta
+    {
+        return $this->planeta;
+    }
+
+    public function setPlaneta(?Planeta $planeta): static
+    {
+        $this->planeta = $planeta;
 
         return $this;
     }
