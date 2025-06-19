@@ -3,18 +3,28 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Planeta;
+use App\Entity\Personaje;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
+use Symfony\UX\Chartjs\Model\Chart;
 
-#[AdminDashboard(routePath: '/admin/main/dashboard', routeName: 'app-admin-main-dashboard-index')]
+#[AdminDashboard(routePath: '/admin/main/dashboard', routeName: 'app_admin_dashboard')]
 class AdminMainDashboardController extends AbstractDashboardController
 {
+    public function __construct(private ChartBuilderInterface $chartBuilder) 
+    {
+    }
     public function index(): Response
     {
-        return parent::index();
+        $chart = $this->chartBuilder->createChart(Chart::TYPE_LINE);
+
+        return $this->render('admin/admin-dashboard.html.twig', [
+            'chart' => $chart,
+        ]);
 
         // Option 1. You can make your dashboard redirect to some common page of your backend
         //
@@ -39,13 +49,15 @@ class AdminMainDashboardController extends AbstractDashboardController
 
     public function configureDashboard(): Dashboard
     {
-        return Dashboard::new()
-            ->setTitle('Sf Appdbz Main');
+    return Dashboard::new()
+        ->setDefaultColorScheme('dark');
     }
+
 
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Planetas', 'fas fa-globe', Planeta::class);
+        yield MenuItem::linkToCrud('Personajes', 'fas fa-globe', Personaje::class);
     }
 }

@@ -1,3 +1,5 @@
+/* ---------------------- COMMON
+-------------------------------------------------------------- */
 * {
   box-sizing: border-box;
 }
@@ -12,6 +14,10 @@
 img {
   max-width: 100%;
   height: auto;
+}
+.btn-warning {
+  max-height: 50px;
+  padding: 0 1.25rem 0 1.25rem;
 }
 /* ---------------------- HEADER
 -------------------------------------------------------------- */
@@ -28,9 +34,9 @@ header {
 }
 header div.main-header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 1rem 1.5rem 1rem 1.5rem;
   border-bottom: 1px solid black;
 }
 header nav ul {
