@@ -39,12 +39,12 @@ header nav ul {
   justify-content: space-between;
   padding: 10px;
   font-size: 0.75rem;
+  margin: 0 !important;
   li a {
     text-decoration: none;
-    color: white;
-    font-size: 1.5rem;
-    padding: 10px;
-    
+    color: white !important;
+    font-size: 1.5rem !important;
+    padding: 10px !important;
   }
 }
 /* ---------------------- BODY
@@ -57,6 +57,7 @@ h1{
   text-align: center;
   padding: 2rem 0 2rem 0;
   font-size: 3rem;
+  font-weight: bold;
 }
 .body-ctn{
   display: flex;
@@ -202,7 +203,7 @@ article:hover{
   object-fit: contain;
 }
 .pj-footer{
-  padding: 0.75rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   background-color: rgb(255, 240, 154);
@@ -281,13 +282,15 @@ p{
 /* ---------------------- FOOTER
 -------------------------------------------------------------- */
 footer {
-  margin: 0;
+  display: flex;
   margin-top: 40px;
   background-color: rgb(233, 67, 67);
   color: white;
   height: 100px;
   border-top: 1px solid black;
   text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 /* ---------------------- MEDIAS
 -------------------------------------------------------------- */

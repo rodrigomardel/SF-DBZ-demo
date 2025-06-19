@@ -36,7 +36,7 @@ final class RazasController extends AbstractController
     #[Route('/personajesrazas/{raza}', name: 'app_personajes_razas')]
     public function obtenerPersonajesRaza(string $raza): Response
     {
-        $response = $this->httpClient->request('GET', 'https://dragonball-api.com/api/characters');
+        $response = $this->httpClient->request('GET', 'https://dragonball-api.com/api/characters?limit=58');
         $data = $response->toArray();
 
         $personajesFiltrados = [];
