@@ -30,7 +30,7 @@ final class RazasController extends AbstractController
     }
 
     /**
-     * Obtiene los personajes de la raza seleccionada
+     * Obtiene de la BBDD local los personajes de la raza seleccionada
      * @param string raza correspondiente
      */
     #[Route('/personajesrazas/{raza}', name: 'app_personajes_razas')]

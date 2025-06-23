@@ -135,30 +135,29 @@ h3{
   margin-left: auto;
   margin-right: auto;
   place-content: center;
-  place-items: center;
 }
-.pj-ctn-pj{
+.pj-ctn-pj {
   margin-top: 0;
   text-align: center;
 }
-.ficha-pj{
+.ficha-pj {
   display: flex;
   list-style: none;
   margin: 0 auto;
   padding-left: 0px;
-    li{
+    li {
       padding: 1rem;
-      p{
+      p {
         text-align: center;
       }
     }
 
 }
-.ficha-pj-planeta{
+.ficha-pj-planeta {
   margin-top: 0;
   text-align: center;
 }
-.art-pj{
+.art-pj {
   width: 280px;
   flex-direction: column;
   background: white;
@@ -173,7 +172,14 @@ h3{
   justify-content: center;
   align-items: center;
 }
-article {
+article#planet {
+  width: 350px !important;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  margin: 2;
+}
+article#pj {
   width: 280px;
   display: flex;
   flex-direction: column;
@@ -182,22 +188,27 @@ article {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 2;
 }
-article:hover{
+article:hover {
   transform: scale(1.02);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
-.msj-empty{
+.msj-empty {
   text-align: center;
   font-size: 1.5rem;
 }
-.pj-ctn-img{
+.pj-ctn-img {
   width: 100%;
   position: relative;
   min-height: 350px;
   max-height: 350px;
   border-radius: 0 1rem 0 1rem;
 }
-.pj-img{
+.planet-img {
+  border-radius: 1rem;
+  min-height: 350px;
+  max-height: 350px;
+}
+.pj-img {
   position: absolute;
   top: -20px;
   width: 100%;
@@ -208,33 +219,33 @@ article:hover{
   z-index: 0;
   object-fit: contain;
 }
-.pj-footer{
+.pj-footer {
   padding: 2rem;
   display: flex;
   flex-direction: column;
   background-color: rgb(255, 240, 154);
   text-align: center;
 }
-p{
+p {
   font-weight: bold;
 }
-.raza-ctn{
+.raza-ctn {
   border-radius: 2rem;
   background-color: rgb(255, 240, 154);
   text-align: center;
 }
-.link-raza{
+.link-raza {
   text-decoration: none;
   color: black;
 }
-.pj-por-raza{
+.pj-por-raza {
   font-size: 2.5rem;
   text-align: center;
-    ul{
+    ul {
       list-style: none;
     }
 }
-.img-trans{
+.img-trans {
   width: 100%;
   height: 100%;
   min-height: 400px;
@@ -243,7 +254,7 @@ p{
   z-index: 0;
   object-fit: contain;
 }
-.pj-ctn-ficha{
+.pj-ctn-ficha {
   display: grid;
   grid-template-columns: repeat(1, minmax(300px, 1fr));
   gap: 60px;
@@ -252,6 +263,9 @@ p{
   margin-right: auto;
   place-items: center;
   justify-content: center;
+}
+.pj-text { 
+    margin: 1rem 0 0 0;
 }
 /* ---------------------- PAGINACION
 -------------------------------------------------------------- */
@@ -297,6 +311,9 @@ footer {
   text-align: center;
   align-items: center;
   justify-content: center;
+  & p {
+    margin-bottom: 0;
+  }
 }
 /* ---------------------- MEDIAS
 -------------------------------------------------------------- */

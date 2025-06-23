@@ -1,58 +1,59 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Personaje{% endblock %}
-
 {% block body %}
-    <h1>Personaje</h1>
+    <h1>Ficha de {{ personaje.name }}</h1>
+    <div class="pj-ctn-ficha boxed">
+        <article class="art-pj">
+            <div class="pj-ctn-img">
+                <img class="pj-img" src="{{ personaje.image }}" alt="Imagen de {{ personaje.name }}">
+            </div>
+            <div class="pj-footer">
+                <div class="pj-title">
+                    <h2>{{ personaje.name }}</h2>
+                    <p>{{ personaje.race }} - {{ personaje.gender }}</p>
+                </div>
+                <div>
+                    <div>
+                        <p>Base KI:</p>
+                        <span>{{ personaje.ki }}</span>
+                    </div>
+                    <div>
+                        <p>Total KI:</p>
+                        <span>{{ personaje.maxKi }}</span>
+                    </div>
+                    <div>
+                        <p>Afilación:</p>
+                        <span>{{ personaje.affiliation }}</span>
+                    </div>
+                </div>
+            </div>
+        </article>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ personaje.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ personaje.name }}</td>
-            </tr>
-            <tr>
-                <th>Ki</th>
-                <td>{{ personaje.ki }}</td>
-            </tr>
-            <tr>
-                <th>MaxKi</th>
-                <td>{{ personaje.maxKi }}</td>
-            </tr>
-            <tr>
-                <th>Race</th>
-                <td>{{ personaje.race }}</td>
-            </tr>
-            <tr>
-                <th>Gender</th>
-                <td>{{ personaje.gender }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ personaje.description }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td>{{ personaje.image }}</td>
-            </tr>
-            <tr>
-                <th>Affiliation</th>
-                <td>{{ personaje.affiliation }}</td>
-            </tr>
-            <tr>
-                <th>DeletedAt</th>
-                <td>{{ personaje.deletedAt ? personaje.deletedAt|date('Y-m-d') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
 
-    <a href="{{ path('app_personaje_local_index') }}">back to list</a>
 
-    <a href="{{ path('app_personaje_local_edit', {'id': personaje.id}) }}">edit</a>
-
-    {{ include('personaje_local/_delete_form.html.twig') }}
+        {# TRANSFORMACIONES Y PLANETA DE ORIGEN API #}
+        {# <div class="pj-ctn-pj boxed">
+        <h3>Transformaciones</h3>
+        <ul class="ficha-pj">
+            {% if personaje.transformations is empty %}
+            <div class="msj-empty">
+                <p>No hay transformaciones</p>
+            </div>
+            {% else %}
+            {% endif %}
+                {% for transformation in personaje.transformations %}
+                    <li>
+                        <p>{{ transformation.name }} <br> KI: {{ transformation.ki }}</p>
+                        <img class="img-trans" src="{{ transformation.image }}" alt="{{ transformation.name }}">
+                    </li>
+                {% endfor %}
+            </ul>
+        </div> #}
+        {# <div class="ficha-pj-planeta">
+        <h3>Planeta de origen</h3>
+            <p>{{ personaje.originPlanet.name }} - {{ personaje.originPlanet.description }}</p>
+            <img src="{{ personaje.originPlanet.image }}" alt="{{ personaje.originPlanet.name }}">
+        </div> #}
+    </div>
 {% endblock %}
+

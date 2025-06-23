@@ -1,51 +1,47 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Personaje index{% endblock %}
-
 {% block body %}
-    <h1>Personaje index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Ki</th>
-                <th>MaxKi</th>
-                <th>Race</th>
-                <th>Gender</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>Affiliation</th>
-                <th>DeletedAt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for personaje in personajes %}
-            <tr>
-                <td>{{ personaje.id }}</td>
-                <td>{{ personaje.name }}</td>
-                <td>{{ personaje.ki }}</td>
-                <td>{{ personaje.maxKi }}</td>
-                <td>{{ personaje.race }}</td>
-                <td>{{ personaje.gender }}</td>
-                <td>{{ personaje.description }}</td>
-                <td>{{ personaje.image }}</td>
-                <td>{{ personaje.affiliation }}</td>
-                <td>{{ personaje.deletedAt ? personaje.deletedAt|date('Y-m-d') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_personaje_local_show', {'id': personaje.id}) }}">show</a>
-                    <a href="{{ path('app_personaje_local_edit', {'id': personaje.id}) }}">edit</a>
-                </td>
-            </tr>
+  <h1>¡Toda la información de tu personaje favorito!</h1>
+ <div class="pj-ctn boxed">
+    {% for personaje in personajes %}
+        <a class="link-raza" href="{{ path('app_personaje_local_show', {'id': personaje.id}) }}">
+            <article id="pj">
+                <div class="pj-ctn-img">
+                    <img class="pj-img" src="{{ asset(personaje.image) }}" alt="pj-img">
+                </div>
+                <div class="pj-footer">
+                    <div class="pj-title">
+                        <h2>{{ personaje.name }}</h2>
+                        <p>{{ personaje.race }} - {{ personaje.gender }}</p>
+                    </div>
+                    <div>
+                        <div>
+                            <p class="pj-text">Base KI:</p>
+                            <span>{{ personaje.ki }}</span>
+                        </div>
+                        <div>
+                            <p class="pj-text">Total KI:</p>
+                            <span>{{ personaje.maxKi }}</span>
+                        </div>
+                        <div>
+                            <p class="pj-text">Afilliation:</p>
+                            <span>{{ personaje.affiliation }}</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </a>
         {% else %}
-            <tr>
-                <td colspan="11">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_personaje_local_new') }}">Create new</a>
+        <p class="info"> No hay registros disponibles </p>
+    {% endfor %}
+    </div>
+    {# <section class="paginacion">
+        <ul>
+            <li><a href="" class="activa">1</a></li>
+            <li><a href="">2</a></li>
+            <li><a href="">3</a></li>
+            <li><a href="">4</a></li>
+            <li><a href="">5</a></li>
+        </ul>
+    </section> #}
 {% endblock %}
+

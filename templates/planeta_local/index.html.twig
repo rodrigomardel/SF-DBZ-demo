@@ -1,43 +1,53 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Planeta index{% endblock %}
+{% block title %}Planetas{% endblock %}
 
 {% block body %}
-    <h1>Planeta index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>IsDestroyed</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>DeletedAt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for planetum in planetas %}
-            <tr>
-                <td>{{ planetum.id }}</td>
-                <td>{{ planetum.name }}</td>
-                <td>{{ planetum.isDestroyed ? 'Yes' : 'No' }}</td>
-                <td>{{ planetum.description }}</td>
-                <td>{{ planetum.image }}</td>
-                <td>{{ planetum.deletedAt ? planetum.deletedAt|date('Y-m-d') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_planeta_local_show', {'id': planetum.id}) }}">show</a>
-                    <a href="{{ path('app_planeta_local_edit', {'id': planetum.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_planeta_local_new') }}">Create new</a>
+  <h1>Planetas</h1>
+            <table class="pj-ctn boxed">
+                <ul>
+                {% for planeta in planetas %}
+                    <li>
+                        <img class="planet-img" src="{{ asset(planeta.image) }}" alt="pj-img">
+                        <h2>{{ planeta.name }}</h2>
+                        <p class="pj-text">Destruido:</p>
+                        <span>{{ planeta.isDestroyed ? 'Yes' : 'No' }}</span>
+                        <p class="pj-text">Descripción:</p>
+                        <span>{{ planeta.description }}</span>
+                    </li>
+                    {% else %}
+                    <p class="info"> No hay registros disponibles </p>
+                {% endfor %}
+                </ul>
+            {# <article id="planet">
+                <div class="pj-ctn-img">
+                    <img class="pj-img" src="{{ asset(planeta.image) }}" alt="pj-img">
+                </div>
+                <div class="pj-footer">
+                    <div class="pj-title">
+                        <h2>{{ planeta.name }}</h2>
+                    </div>
+                    <div>
+                        <div>
+                            <p class="pj-text">Destruido:</p>
+                            <span>{{ planeta.isDestroyed ? 'Yes' : 'No' }}</span>
+                        </div>
+                        <div>
+                            <p class="pj-text">Descripción:</p>
+                            <span>{{ planeta.description }}</span>
+                        </div>
+                    </div>
+                </div>
+            </article> #}
+            </table>
+    {# <section class="paginacion">
+        <ul>
+            <li><a href="" class="activa">1</a></li>
+            <li><a href="">2</a></li>
+            <li><a href="">3</a></li>
+            <li><a href="">4</a></li>
+            <li><a href="">5</a></li>
+        </ul>
+    </section> #}
 {% endblock %}
+

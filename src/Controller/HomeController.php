@@ -6,26 +6,40 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use App\Repository\PersonajeRepository;
+
 
 final class HomeController extends AbstractController
 {
-    private HttpClientInterface $httpClient;
+    // private HttpClientInterface $httpClient;
 
-    public function __construct(HttpClientInterface $httpClient)
-    {
-        $this->httpClient = $httpClient;
-    }
+    // public function __construct(HttpClientInterface $httpClient)
+    // {
+    //     $this->httpClient = $httpClient;
+    // }
 
     /**
-    * Obtención de todos los personajes en caso contrario datos vacíos
+    * Obtención de todos los personajes de la API en caso contrario datos vacíos.
     */
-    #[Route('/home', name: 'app_home')]
-    public function obtenerPersonajes(): Response
+    // #[Route('/home', name: 'app_home')]
+    // public function obtenerPersonajes(): Response
+    // {
+    //     $response = $this->httpClient->request('GET', 'https://dragonball-api.com/api/characters?limit=12');
+    //     $data = $response->toArray(); 
+    //     return $this->render('home/home.html.twig', [
+    //         'personajes' => $data['items'] ?? [],
+    //     ]);
+    // }
+
+    /**
+    * Obtención de todos los personajes de la BBDD local.
+    */
+    #[Route('/home', name: 'app_home', methods: ['GET'])]
+    public function obtenerPersonajes(PersonajeRepository $personajeRepository): Response
     {
-        $response = $this->httpClient->request('GET', 'https://dragonball-api.com/api/characters?limit=12');
-        $data = $response->toArray(); 
         return $this->render('home/home.html.twig', [
-            'personajes' => $data['items'] ?? [],
+            'personajes' => $personajeRepository->findAll(),
         ]);
     }
+
 }
